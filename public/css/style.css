@@ -1,0 +1,473 @@
+/* ============================================================
+   Parfumeria — feuille de style
+   Ambiance "maison de parfum" : ivoire, brun expresso presque noir,
+   doré champagne, beaucoup d'espace. Brun expresso et non noir pur :
+   on reste différent du noir et blanc de Dea Store.
+   ============================================================ */
+
+:root {
+    --encre: #1F1B18;          /* texte principal (brun expresso) */
+    --principal: #1F1B18;      /* boutons, bannière, pied de page */
+    --principal-survol: #3D352E;
+    --creme: #FAF7F2;          /* fond de page (ivoire) */
+    --sable: #F1EBE2;          /* fond des sections alternées, des photos */
+    --blanc: #FFFFFF;
+    --or: #C9AB72;             /* doré champagne : seulement sur fond foncé */
+    --or-fonce: #7C5F2E;       /* doré lisible sur fond clair */
+    --gris: #6C635B;
+    --bordure: #E5DDD2;
+    --rouge: #A33A30;          /* promotions */
+    --vert: #3D6B47;
+    --titres: 'Cormorant Garamond', Georgia, serif;
+    --texte: 'Jost', system-ui, sans-serif;
+    --rayon: 4px;              /* coins presque droits : plus élégant */
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--creme);
+    color: var(--encre);
+    font-family: var(--texte);
+    font-size: 16px;
+    line-height: 1.55;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 { font-family: var(--titres); font-weight: 500; line-height: 1.1; margin: 0 0 16px; letter-spacing: .3px; }
+h1 { font-size: 48px; }
+h2 { font-size: 34px; }
+h3 { font-size: 22px; }
+
+a { color: var(--principal); }
+small { color: var(--gris); }
+img { max-width: 100%; }
+
+.conteneur { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.contenu { flex: 1; padding-top: 32px; padding-bottom: 64px; }
+.contenu-accueil { padding-top: 0; padding-bottom: 0; }
+.page-etroite { max-width: 460px; margin: 0 auto; }
+.invisible { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--or-fonce); outline-offset: 2px; }
+
+/* ---------- Bandeau d'annonce + en-tête ---------- */
+.annonce { margin: 0; padding: 9px 16px; background: var(--principal); color: var(--or); text-align: center; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+
+/* En-tête clair, collé en haut pendant le défilement */
+.entete { position: sticky; top: 0; z-index: 40; background: rgba(250, 247, 242, .96); color: var(--encre); border-bottom: 1px solid var(--bordure); backdrop-filter: blur(6px); }
+.entete a { color: var(--encre); text-decoration: none; }
+.entete-ligne { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; padding-top: 18px; padding-bottom: 18px; }
+
+.logo { display: inline-flex; align-items: center; gap: 10px; color: var(--or-fonce) !important; }
+.logo-texte { font-family: var(--titres); font-weight: 600; font-size: 32px; letter-spacing: 3px; text-transform: uppercase; color: var(--encre); line-height: 1; }
+
+.recherche { flex: 1 1 260px; display: flex; max-width: 440px; margin: 0; }
+.recherche input { flex: 1; min-width: 0; min-height: 44px; padding: 0 16px; border: 1px solid var(--bordure); border-right: 0; border-radius: var(--rayon) 0 0 var(--rayon); background: var(--blanc); font: inherit; color: var(--encre); }
+.recherche input:focus { border-color: var(--encre); outline: none; }
+.recherche button { min-width: 48px; border: 0; border-radius: 0 var(--rayon) var(--rayon) 0; background: var(--principal); color: var(--creme); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.recherche button:hover { background: var(--principal-survol); }
+
+.menu-compte { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; margin-left: auto; }
+.menu-compte a, .menu-compte .lien { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
+.menu-compte a:hover, .menu-compte .lien:hover { color: var(--or-fonce); }
+.menu-compte form { margin: 0; }
+.entete .lien { color: var(--encre); text-decoration: none; }
+.lien-admin { color: var(--or-fonce) !important; font-weight: 600 !important; }
+.pastille { background: var(--principal); color: var(--creme); border-radius: 999px; padding: 0 8px; margin-left: 6px; font-weight: 600; font-size: 13px; }
+
+.menu-principal { border-top: 1px solid var(--bordure); }
+.menu-principal .conteneur { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 40px; }
+.menu-principal a { white-space: nowrap; display: inline-flex; align-items: center; min-height: 48px; font-size: 13px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; border-bottom: 1px solid transparent; }
+.menu-principal a:hover, .menu-principal a[aria-current="page"] { color: var(--or-fonce); border-bottom-color: var(--or-fonce); }
+.menu-principal .lien-promo { color: var(--rouge); }
+
+/* ---------- Boutons et liens ---------- */
+/* Boutons à coins droits, texte en petites capitales espacées : le style des maisons de parfum */
+.bouton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 28px; background: var(--principal); color: var(--creme); border: 1px solid var(--principal); border-radius: 2px; font: inherit; font-size: 14px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.bouton:hover { background: var(--principal-survol); border-color: var(--principal-survol); }
+.bouton-or { background: var(--or); border-color: var(--or); color: var(--encre); }
+.bouton-or:hover { background: var(--creme); border-color: var(--creme); color: var(--encre); }
+.bouton-clair { background: transparent; border-color: var(--creme); color: var(--creme); }
+.bouton-clair:hover { background: var(--creme); color: var(--encre); }
+.bouton-contour { background: transparent; color: var(--principal); }
+.bouton-contour:hover { background: var(--principal); color: var(--creme); }
+.bouton-secondaire { min-height: 44px; padding: 0 18px; background: transparent; color: var(--principal); }
+.bouton-secondaire:hover { background: var(--principal); color: var(--creme); }
+.bouton-petit { min-height: 36px; padding: 0 14px; }
+.bouton-desactive { background: var(--sable); border-color: var(--bordure); color: var(--gris); cursor: default; }
+.bouton-desactive:hover { background: var(--sable); border-color: var(--bordure); }
+.lien { background: none; border: 0; padding: 0; min-height: 44px; font: inherit; color: var(--principal); text-decoration: underline; cursor: pointer; }
+.lien-fleche { font-weight: 500; text-decoration: none; white-space: nowrap; }
+.lien-fleche:hover { text-decoration: underline; }
+
+/* ---------- Messages ---------- */
+.message { padding: 12px 16px; border-radius: var(--rayon); border: 1px solid; margin: 0 0 24px; background: var(--blanc); }
+.contenu-accueil .message { margin-top: 24px; }
+.message-succes { border-color: var(--vert); color: var(--vert); }
+.message-erreur { border-color: var(--rouge); color: var(--rouge); }
+.erreur-champ { display: block; color: var(--rouge); font-size: 14px; margin-top: 4px; }
+.note { color: var(--gris); font-size: 15px; }
+.vide { color: var(--gris); padding: 24px 0; }
+.fil { color: var(--gris); font-size: 14px; margin: 0 0 20px; }
+.fil a { color: var(--gris); }
+.titre-ligne { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 24px; }
+.titre-ligne h1, .titre-ligne p { margin: 0; }
+.bandeau { margin-bottom: 32px; }
+.bandeau p { color: var(--gris); max-width: 60ch; }
+
+/* ---------- Bannière d'accueil ---------- */
+/* Fond expresso avec un halo doré, comme une vitrine éclairée */
+.hero { background: radial-gradient(ellipse at 72% 45%, #4A3A2A 0%, #2A231D 45%, #16130F 100%); color: var(--creme); }
+.hero-ligne { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 32px; padding-top: 96px; padding-bottom: 96px; }
+.sur-titre { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; color: var(--or); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; }
+.sur-titre::before { content: ""; width: 40px; height: 1px; background: var(--or); } /* petit trait doré */
+.hero h1 { font-size: 72px; font-weight: 400; margin-bottom: 24px; }
+.hero h1 em { color: var(--or); font-weight: 400; }
+.hero-texte > p:not(.sur-titre) { max-width: 44ch; color: #DCD2C6; font-size: 18px; font-weight: 300; margin: 0 0 32px; }
+.hero-boutons { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-visuel { display: flex; justify-content: center; }
+.hero-visuel .flacon { width: min(260px, 66%); filter: drop-shadow(0 40px 50px rgba(0, 0, 0, .55)); }
+.hero .flacon-corps { fill: rgba(201, 171, 114, .88); }
+.hero .flacon-bouchon, .hero .flacon-col { fill: #E4CF9F; }
+.hero .flacon-reflet { fill: rgba(255, 255, 255, .3); }
+
+/* ---------- Sections de l'accueil ---------- */
+.section { padding: 72px 0; }
+.section-fond { background: var(--sable); }
+.section-promo { background: #F4E9E3; }
+/* Titre de section centré, avec un petit trait doré dessous */
+.section-entete { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 40px; text-align: center; }
+.section-entete h2 { margin: 0; }
+.section-entete h2::after { content: ""; display: block; width: 48px; height: 1px; margin: 14px auto 0; background: var(--or-fonce); }
+.section-entete .lien-fleche { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); }
+.section-similaires { padding-bottom: 0; }
+
+/* Catégories : trois tons de la même famille (expresso, nude, champagne) */
+.tuiles-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.tuile-categorie { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; min-height: 240px; padding: 28px; border-radius: var(--rayon); color: var(--encre); text-decoration: none; background: var(--sable); transition: transform .25s, box-shadow .25s; }
+.tuile-categorie:hover { transform: translateY(-4px); box-shadow: 0 18px 30px -18px rgba(31, 27, 24, .45); }
+.tuile-meshkuj { background: linear-gradient(160deg, #3A322B 0%, #1F1B18 100%); color: var(--creme); }
+.tuile-femra { background: linear-gradient(160deg, #F1E1D8 0%, #E2C8BA 100%); }
+.tuile-unisex { background: linear-gradient(160deg, #EDE1C8 0%, #D6C29B 100%); }
+.tuile-petit { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--or-fonce); }
+.tuile-meshkuj .tuile-petit { color: var(--or); }
+.tuile-nom { font-family: var(--titres); font-size: 46px; font-weight: 400; line-height: 1; margin-bottom: 10px; }
+.tuile-categorie .lien-fleche { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+
+.puces-notes { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.puce { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border: 1px solid var(--bordure); border-radius: 999px; background: transparent; color: var(--encre); text-decoration: none; font-weight: 400; letter-spacing: .5px; transition: background .2s, color .2s, border-color .2s; }
+.puce:hover, .puce[aria-current] { border-color: var(--principal); background: var(--principal); color: var(--creme); }
+.puces-petites { justify-content: flex-start; gap: 6px; margin: 0 0 20px; } /* fiche produit : alignées à gauche */
+.puces-petites .puce { min-height: 34px; padding: 0 14px; font-size: 14px; }
+
+.tuiles-marques { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.tuiles-marques a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 110px; padding: 16px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--creme); text-decoration: none; text-align: center; transition: border-color .2s; }
+.tuiles-marques a:hover { border-color: var(--or-fonce); }
+.marque-nom { font-family: var(--titres); font-size: 24px; font-weight: 500; letter-spacing: 1px; color: var(--encre); }
+
+/* Engagements : sans cadre, séparés par de fins traits */
+.avantages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.avantages li { padding: 12px 24px; text-align: center; }
+.avantages li + li { border-left: 1px solid var(--bordure); }
+.avantages svg { width: 34px; height: 34px; color: var(--or-fonce); }
+.avantages h3 { margin: 12px 0 6px; }
+.avantages p { margin: 0; color: var(--gris); }
+
+/* ---------- Cartes produit ---------- */
+/* Cartes sans cadre : la photo sur un fond sable, le texte centré dessous */
+.grille { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px 24px; }
+.carte { position: relative; display: flex; flex-direction: column; gap: 14px; text-align: center; }
+.carte-visuel { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 5; border-radius: var(--rayon); background: var(--sable); overflow: hidden; }
+.section-fond .carte-visuel { background: var(--creme); }
+.carte-visuel img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.carte:hover .carte-visuel img { transform: scale(1.05); }
+.carte-visuel .flacon { width: 42%; transition: transform .6s ease; }
+.carte:hover .carte-visuel .flacon { transform: scale(1.06) translateY(-4px); }
+.carte-infos { flex: 1; }
+.carte-marque { display: block; color: var(--or-fonce); font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; }
+.carte-nom { margin: 4px 0 6px; font-size: 24px; font-weight: 500; }
+.carte-nom a { color: var(--encre); text-decoration: none; }
+.carte-nom a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.carte-prix { margin: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 4px 8px; }
+.carte-prix strong { font-size: 17px; font-weight: 500; }
+.carte-prix s, .contenance-prix s { color: var(--gris); font-size: 14px; }
+.nga { color: var(--gris); font-size: 14px; }
+.prix-promo { color: var(--rouge); }
+.carte form { margin: 0; }
+.bouton-carte { width: 100%; min-height: 42px; font-size: 12px; }
+
+.badge { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 2px; font-size: 12px; font-weight: 500; letter-spacing: 1px; }
+.badge-promo { background: var(--rouge); color: var(--blanc); }
+.badge-epuise { background: var(--encre); color: var(--creme); }
+.badge-inline { position: static; font-size: 12px; padding: 2px 8px; }
+
+/* Flacon dessiné (quand il n'y a pas de photo) */
+.flacon-bouchon, .flacon-col { fill: #A8884F; }
+.flacon-corps { fill: #DDD0BF; }
+.flacon-reflet { fill: rgba(255, 255, 255, .6); }
+
+/* ---------- Catalogue ---------- */
+.catalogue { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+.filtres-colonne details { border-bottom: 1px solid var(--bordure); padding: 12px 0; }
+.filtres-colonne summary { cursor: pointer; font-family: var(--titres); font-size: 22px; font-weight: 600; min-height: 36px; }
+.filtres-colonne ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.filtres-colonne li a:not(.puce) { display: inline-flex; min-height: 34px; align-items: center; color: var(--encre); text-decoration: none; }
+.filtres-colonne li a:not(.puce):hover { text-decoration: underline; }
+.filtres-colonne a[aria-current]:not(.puce) { color: var(--principal); font-weight: 600; }
+.filtres-colonne > p { margin: 16px 0 0; }
+.lien-promo-filtre { color: var(--rouge); font-weight: 500; }
+.tri { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 10px; margin: 0 0 20px; }
+.tri select { min-height: 44px; padding: 0 12px; border: 1px solid var(--bordure); border-radius: 2px; background: var(--blanc); font: inherit; }
+.grille-catalogue { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+/* ---------- Fiche produit ---------- */
+.fiche { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; align-items: start; }
+.fiche-visuel { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 5; max-width: 540px; border-radius: var(--rayon); background: var(--sable); overflow: hidden; }
+.fiche-visuel img { width: 100%; height: 100%; object-fit: cover; }
+.fiche-visuel .flacon { width: 45%; }
+
+/* Galerie de la fiche produit : miniatures sous la grande photo */
+.fiche-galerie { max-width: 540px; }
+.vignettes { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 0; padding: 0; }
+.vignette { display: block; width: 72px; aspect-ratio: 4 / 5; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: var(--blanc); opacity: .7; transition: opacity .15s; }
+.vignette:hover { opacity: 1; }
+.vignette[aria-current="true"] { border-color: var(--principal); opacity: 1; }
+.vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Admin : photos supplémentaires */
+.galerie-admin { list-style: none; display: flex; flex-wrap: wrap; gap: 16px; margin: 0 0 16px; padding: 0; }
+.galerie-admin li { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.galerie-admin img { width: 110px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--rayon); border: 1px solid var(--bordure); }
+.galerie-admin form { margin: 0; }
+.lien-danger { color: var(--rouge); }
+
+/* Admin : statistiques (les chiffres non cliquables ont le même style que les liens du tableau de bord) */
+.chiffres div { display: flex; flex-direction: column; gap: 4px; padding: 20px; background: var(--principal); color: var(--creme); border-radius: var(--rayon); height: 100%; }
+.tableau-stats th[scope="row"] { background: none; color: var(--encre); font-size: 15px; text-transform: none; letter-spacing: 0; font-weight: 500; }
+.cellule-barre { display: grid; grid-template-columns: minmax(80px, 1fr) 90px; align-items: center; gap: 10px; min-width: 220px; }
+.cellule-barre > span:last-child { text-align: right; }
+.piste { display: block; } /* la "piste" = 100 % ; la barre à l'intérieur prend sa part */
+.barre { display: block; height: 10px; min-width: 2px; border-radius: 0 4px 4px 0; background: var(--principal); }
+.texte-droite { text-align: right; }
+.liste-classement { counter-reset: rang; }
+.liste-classement li { counter-increment: rang; }
+.liste-classement li > span:first-child::before { content: counter(rang) ". "; color: var(--or-fonce); font-weight: 600; }
+.ligne-pays { flex-wrap: wrap; }
+
+/* Admin : marques et notes (une ligne = champ + Ruaj, nombre de parfums, Fshi) */
+.recap li.ligne-gestion { align-items: center; padding: 6px 0; }
+.ligne-gestion form { margin: 0; }
+.form-renommer { display: flex; align-items: center; gap: 10px; flex: 1; }
+.form-renommer input { flex: 1; min-width: 0; min-height: 40px; padding: 0 12px; border: 1px solid var(--bordure); border-radius: 8px; font: inherit; }
+.nb-parfums { color: var(--gris); white-space: nowrap; }
+
+/* Codes promo : panier et admin */
+.form-code { margin: 0 auto 0 0; font-size: 16px; }
+.form-code label { display: block; margin-bottom: 6px; }
+.form-code p { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+.ligne-code { display: flex; gap: 8px; }
+.ligne-code input { width: 160px; min-height: 44px; padding: 0 14px; border: 1px solid var(--bordure); border-radius: 2px; font: inherit; text-transform: uppercase; }
+.ligne-remise strong { color: var(--vert); }
+.info-livraison { margin: 16px 0 0; padding: 12px 16px; border-radius: var(--rayon); background: var(--sable); text-align: right; }
+.cellule-actions { display: flex; gap: 14px; }
+.cellule-actions form { margin: 0; }
+.formulaire-code { max-width: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 20px; align-items: start; }
+.formulaire-code .bouton { grid-column: 1 / -1; }
+.barre-pays { flex-basis: 100%; max-width: 100%; height: 6px; }
+.fiche-marque { display: inline-block; margin-bottom: 8px; color: var(--or-fonce); font-size: 13px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; }
+.fiche-infos h1 { margin-bottom: 4px; }
+.fiche-infos > .note { margin: 0 0 16px; }
+
+.form-achat fieldset { border: 0; margin: 0; padding: 0; }
+.form-achat legend { font-weight: 600; margin-bottom: 10px; }
+.choix-contenance { display: grid; gap: 10px; }
+.contenance { display: grid; grid-template-columns: auto 90px 1fr auto; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--bordure); border-radius: var(--rayon); background: var(--blanc); transition: border-color .2s; cursor: pointer; }
+.contenance:hover { border-color: var(--principal); }
+.contenance:has(input:checked) { border-color: var(--principal); box-shadow: inset 0 0 0 1px var(--principal); background: #F6F0E6; }
+.contenance input { width: 20px; height: 20px; margin: 0; accent-color: var(--principal); }
+.contenance-ml { font-weight: 600; }
+.contenance-prix { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.contenance-epuisee { opacity: .55; cursor: not-allowed; }
+.ligne-achat { display: flex; gap: 12px; margin-top: 20px; }
+.ligne-achat input { width: 80px; min-height: 48px; padding: 0 12px; border: 1px solid var(--bordure); border-radius: 2px; font: inherit; text-align: center; }
+.ligne-achat .bouton { flex: 1; }
+.fiche-description { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--bordure); }
+.fiche-description h2 { font-size: 24px; }
+.fiche-garanties { list-style: none; margin: 24px 0 0; padding: 16px 20px; border-radius: var(--rayon); background: transparent; border: 1px solid var(--bordure); color: var(--gris); font-size: 15px; }
+.fiche-garanties li { padding: 4px 0; }
+.fiche-garanties li::before { content: "✓ "; color: var(--vert); font-weight: 600; }
+
+/* Liste d'envies : bouton cœur (vide = pas dans la liste, rempli = dans la liste) */
+.form-coeur { margin: 0; }
+.coeur { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--bordure); background: var(--blanc); color: var(--principal); font: inherit; cursor: pointer; }
+.coeur svg { fill: none; stroke: currentColor; stroke-width: 2; transition: transform .15s; }
+.coeur:hover svg { transform: scale(1.15); }
+.coeur-actif svg { fill: currentColor; }
+.coeur-carte { position: absolute; top: 10px; right: 10px; }
+.coeur-carte .coeur { width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 2px 8px rgba(43, 21, 32, .12); }
+.coeur-carte .coeur-texte { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } /* lu par les lecteurs d'écran seulement */
+.coeur-fiche { margin-top: 12px; }
+.coeur-fiche .coeur { min-height: 44px; padding: 0 18px; border-radius: 2px; }
+.coeur-fiche .coeur:hover { border-color: var(--principal); }
+.lien-favoris svg { display: block; }
+
+/* Commander par WhatsApp / Viber (couleurs foncées des marques : texte blanc lisible) */
+.commande-messagerie { margin-top: 20px; }
+.commande-messagerie p { margin: 0 0 8px; color: var(--gris); font-size: 15px; }
+.commande-messagerie-boutons { display: flex; flex-wrap: wrap; gap: 10px; }
+.bouton-whatsapp { flex: 1; background: #128C7E; border-color: #128C7E; color: #fff; }
+.bouton-whatsapp:hover { background: #075E54; border-color: #075E54; }
+.bouton-viber { background: #665CAC; border-color: #665CAC; color: #fff; }
+.bouton-viber:hover { background: #4F4690; border-color: #4F4690; }
+
+/* Bouton WhatsApp rond, toujours visible en bas à droite */
+.whatsapp-flottant { position: fixed; right: 20px; bottom: 20px; z-index: 50; display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #128C7E; color: #fff; box-shadow: 0 4px 14px rgba(0, 0, 0, .25); transition: transform .2s; }
+.whatsapp-flottant:hover { transform: scale(1.08); background: #075E54; }
+
+/* ---------- Pages d'information ---------- */
+.page-texte { max-width: 760px; }
+.page-texte h2 { font-size: 26px; margin-top: 32px; }
+.page-texte li { margin-bottom: 6px; }
+.liste-contact { list-style: none; padding: 0; }
+.liste-contact li { padding: 12px 0; border-bottom: 1px solid var(--bordure); }
+
+/* ---------- Formulaires ---------- */
+.formulaire { display: flex; flex-direction: column; max-width: 460px; }
+.formulaire label { font-weight: 600; margin: 16px 0 6px; }
+.formulaire input, .formulaire select, .form-quantite input { min-height: 48px; padding: 0 14px; border: 1px solid #B9A9A0; border-radius: var(--rayon); background: var(--blanc); font: inherit; color: var(--encre); width: 100%; }
+.formulaire .bouton { margin-top: 24px; align-self: flex-start; }
+.formulaire input[type="number"] { max-width: 110px; }
+.formulaire textarea { padding: 10px 14px; border: 1px solid #B9A9A0; border-radius: var(--rayon); background: var(--blanc); font: inherit; color: var(--encre); width: 100%; resize: vertical; }
+.formulaire input[type="file"] { min-height: 0; padding: 10px 0; border: 0; background: none; }
+.formulaire .case { display: flex; align-items: center; gap: 10px; font-weight: 500; margin: 10px 0 0; }
+.formulaire .case input { width: 20px; min-height: 20px; height: 20px; margin: 0; accent-color: var(--principal); }
+.formulaire.recap { max-width: none; }
+.formulaire .note { margin-top: 4px; font-size: 14px; }
+.cases-notes { border: 1px solid var(--bordure); border-radius: var(--rayon); margin: 16px 0 0; padding: 8px 16px 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.cases-notes legend { font-weight: 600; padding: 0 6px; }
+
+/* ---------- Tableaux, panier, récapitulatifs ---------- */
+.tableau-defilant { overflow-x: auto; }
+.tableau { width: 100%; border-collapse: collapse; min-width: 560px; background: var(--blanc); border-radius: var(--rayon); overflow: hidden; }
+.tableau th, .tableau td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--bordure); vertical-align: middle; }
+.tableau th { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; background: var(--principal); color: var(--creme); }
+.tableau form { margin: 0; }
+.tableau-compact { min-width: 0; }
+.tableau-compact th, .tableau-compact td { padding: 8px 10px; }
+.form-quantite { display: flex; gap: 8px; align-items: center; }
+.form-quantite input { width: 76px; min-height: 44px; }
+.total-panier { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px 28px; margin-top: 24px; font-size: 20px; }
+.total-panier p { margin: 0; }
+
+.deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; align-items: start; }
+.recap { background: var(--blanc); border: 1px solid var(--bordure); border-radius: var(--rayon); padding: 24px; }
+.recap ul { list-style: none; margin: 0; padding: 0; }
+.recap li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--bordure); }
+.recap-total { display: flex; justify-content: space-between; gap: 16px; margin: 16px 0 0; font-size: 20px; }
+
+.commande-historique { margin-bottom: 20px; }
+.commande-historique header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.commande-historique h2 { margin: 0; }
+.statut { padding: 3px 12px; border-radius: 999px; background: var(--encre); color: var(--creme); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.statut-confirmee { background: #2B4C9A; }
+.statut-expediee { background: #7A4B00; }
+.statut-livree { background: var(--vert); }
+.statut-annulee { background: var(--rouge); }
+
+/* ---------- Espace admin ---------- */
+.menu-admin { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding-bottom: 12px; border-bottom: 2px solid var(--principal); }
+.menu-admin a, .filtres a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--bordure); border-radius: 999px; background: var(--blanc); text-decoration: none; font-weight: 500; }
+.menu-admin a[aria-current="page"] { background: var(--principal); color: var(--creme); border-color: var(--principal); }
+.filtres { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+.filtres a { min-height: 40px; padding: 0 12px; font-size: 15px; }
+.filtres a[aria-current="page"] { border-color: var(--principal); box-shadow: inset 0 -3px 0 var(--or); }
+.menu-admin a:hover, .filtres a:hover { border-color: var(--principal); }
+
+.chiffres { list-style: none; margin: 0 0 32px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.chiffres a { display: flex; flex-direction: column; gap: 4px; padding: 20px; background: var(--principal); color: var(--creme); border-radius: var(--rayon); text-decoration: none; height: 100%; }
+.chiffres a:hover { outline: 3px solid var(--or); }
+.chiffre { font-family: var(--titres); font-weight: 700; font-size: 42px; line-height: 1; color: var(--or); }
+
+.texte-rouge { color: var(--rouge); font-weight: 600; }
+.ligne-inactive td { color: var(--gris); background: #F3EEEA; }
+.cellule-miniature { width: 64px; }
+.miniature { display: block; width: 48px; height: 60px; object-fit: cover; border-radius: 6px; background: var(--sable); }
+.apercu { display: block; width: 120px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--rayon); margin-bottom: 8px; }
+.etiquette-admin { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--sable); color: var(--or-fonce); font-size: 12px; font-weight: 600; }
+.recap h3 { margin-top: 28px; }
+.bloc-statut { margin-top: 24px; }
+.champ-stock { width: 100px; min-height: 44px; padding: 0 10px; border: 1px solid #B9A9A0; border-radius: 8px; font: inherit; }
+.espace-haut { margin-top: 16px; }
+.ligne-ajout { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
+.ligne-ajout label { display: block; font-weight: 600; margin: 12px 0 6px; }
+
+/* ---------- Pied de page ---------- */
+.pied { background: var(--encre); color: #D9CBC3; padding: 48px 0 0; font-size: 15px; }
+.pied-colonnes { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 32px; }
+.pied-logo { font-family: var(--titres); font-size: 30px; font-weight: 700; color: var(--or); margin: 0 0 8px; }
+.pied h2 { font-family: var(--texte); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--or); margin: 0 0 12px; }
+.pied ul { list-style: none; margin: 0; padding: 0; }
+.pied li { padding: 3px 0; }
+.pied a { color: #EFE4DD; text-decoration: none; }
+.pied a:hover { color: var(--or); text-decoration: underline; }
+.pied p { margin: 0 0 8px; }
+.pied-bas { margin-top: 40px; padding-top: 18px; padding-bottom: 18px; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 13px; color: #A8968E; }
+
+/* Accessibilité : les personnes qui ont demandé "moins d'animations" à leur téléphone n'en ont pas */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Téléphone / tablette ---------- */
+@media (max-width: 900px) {
+    .hero-ligne { grid-template-columns: minmax(0, 1fr); padding-top: 48px; padding-bottom: 48px; }
+    .hero-visuel { display: none; }
+    .catalogue { grid-template-columns: 1fr; gap: 16px; }
+    .filtres-colonne details:not([open]) { padding-bottom: 12px; }
+    .pied-colonnes { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .hero h1 { font-size: 46px; }
+    .hero-ligne { padding-top: 56px; padding-bottom: 56px; }
+    /* Sur téléphone, l'en-tête ne reste pas collé en haut : il prendrait un tiers de l'écran */
+    .entete { position: static; }
+    .logo-texte { font-size: 26px; letter-spacing: 2px; }
+    .menu-principal .conteneur { justify-content: flex-start; }
+    .section-entete { margin-bottom: 28px; }
+    .grille { gap: 28px 12px; }
+    .avantages li + li { border-left: 0; border-top: 1px solid var(--bordure); padding-top: 24px; }
+    .menu-compte { margin-left: 0; }
+    .recherche { order: 3; flex-basis: 100%; max-width: none; }
+    .menu-principal .conteneur { gap: 0 20px; overflow-x: auto; flex-wrap: nowrap; }
+    /* Fondu à droite : montre qu'il y a d'autres liens en faisant glisser le menu */
+    .menu-principal .conteneur { -webkit-mask-image: linear-gradient(to right, #000 85%, transparent); mask-image: linear-gradient(to right, #000 85%, transparent); padding-right: 40px; }
+    .grille { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; }
+    .tuiles-categories { grid-template-columns: minmax(0, 1fr); }
+    .tuile-categorie { min-height: 140px; }
+    .bouton { letter-spacing: 1px; padding: 0 18px; }
+    .bouton-carte { padding: 0 6px; font-size: 11px; letter-spacing: .5px; }
+    .hero-boutons .bouton { flex: 1 1 auto; }
+    .carte-nom { font-size: 20px; }
+    .contenance { grid-template-columns: auto 70px 1fr; }
+    .contenance small { grid-column: 2 / -1; }
+    .pied-colonnes { grid-template-columns: 1fr; }
+    .section { padding: 40px 0; }
+    .whatsapp-flottant { right: 14px; bottom: 14px; width: 52px; height: 52px; }
+
+    /* Panier : le tableau devient une carte par parfum (plus de défilement sur le côté) */
+    .tableau-panier { min-width: 0; }
+    .tableau-panier thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } /* lu par les lecteurs d'écran */
+    .tableau-panier tr { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; padding: 14px; border-bottom: 1px solid var(--bordure); }
+    .tableau-panier td { display: block; padding: 0; border: 0; }
+    .tableau-panier td:first-child { grid-column: 1 / -1; }
+    .tableau-panier td[data-libelle]::before { content: attr(data-libelle) ": "; color: var(--gris); font-size: 14px; }
+    .tableau-panier td:last-child { align-self: center; text-align: right; }
+
+    /* Page commande : le récapitulatif du panier passe avant le formulaire */
+    .recap-commande { order: -1; }
+}

@@ -1,0 +1,26 @@
+# ============================================================
+#  Fichiers que Git ne doit JAMAIS enregistrer
+# ============================================================
+
+# Réglages du serveur en ligne : contient le mot de passe de la base de données
+config/production.php
+
+# Journaux d'erreurs (propres à chaque machine) — on garde seulement la protection .htaccess
+logs/*
+!logs/.htaccess
+
+# Photos envoyées depuis l'admin (ce sont des données, pas du code)
+# On garde la protection .htaccess et le petit fichier d'explication
+public/img/produits/*
+!public/img/produits/.htaccess
+!public/img/produits/LISEZMOI.txt
+
+# Fichiers créés par les éditeurs et par Windows
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# Notes de travail pour l'assistant de code (restent sur l'ordinateur)
+/CLAUDE.md
+/AGENTS.md

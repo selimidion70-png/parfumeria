@@ -1,0 +1,7 @@
+# Fins de ligne "Linux" (LF) pour tous les fichiers texte : comme sur le serveur en ligne
+* text=auto eol=lf
+
+# Images : jamais modifiées par Git
+*.png binary
+*.jpg binary
+*.webp binary
