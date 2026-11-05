@@ -5,6 +5,8 @@ Le site s'adresse à une clientèle du Kosovo, d'Albanie et de Macédoine du Nor
 
 > Projet réel en cours de développement pour un petit commerce. Les marques et parfums de la base d'exemple sont inventés.
 
+![Aperçu de la page d'accueil de Parfumeria](docs/apercu.jpg)
+
 ---
 
 ## ✨ Fonctionnalités
